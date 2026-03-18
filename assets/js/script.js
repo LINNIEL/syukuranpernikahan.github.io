@@ -62,14 +62,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-    function copyRekening() {
-        const rekening = "003901137928502";
-        navigator.clipboard.writeText(rekening);
-        alert("Nomor rekening PRISCHA MAYLIETA telah disalin!");
-    }
-    function copyRekening2() {
-        const rekening = "169601004344539";
-        navigator.clipboard.writeText(rekening);
-        alert("Nomor rekening SKHANA telah disalin!");
-    }
+
     
