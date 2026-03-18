@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'edwardian'; /* Ganti dengan nama font Anda */
+    src: url('/assets/font/edwardianscriptitc.ttf') format('truetype'); /* Sesuaikan jalur ke font */
+  }
+
+body{
+    background-color: black;
+}
+
+.mobile_container{
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 95vh;
+}
+
+#nama-tamu{
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+
+.linniel_cover{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../bg/bg1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.card{
+    background-color: rgba(247, 247, 247, 0);
+    bottom: 0;
+    margin-bottom: 50px;
+    border: none;
+    color: white;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+.mempelai{
+    font-family: "Great Vibes", cursive;
+    font-size: 2.4rem;
+    text-shadow: 2px 2px 4px #0f69f157;
+    margin-top: -25px;
+}
+
+.tilt{
+    font-size: 12px;
+}
+.title{
+    padding-top: 2%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+.btn{
+    width: 100%;
+    background-color: #0000009c;
+    box-shadow: 2px 2px 4px #ffffff57;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
+}
+.paper{
+    width: 20px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.frame{
+    position: absolute;
+    width: 260px;
+    height: 130px;
+    z-index: 1;
+    left: 18%;
+    filter: drop-shadow(2px 2px 4px #f1c40f);
+    
+}
+
