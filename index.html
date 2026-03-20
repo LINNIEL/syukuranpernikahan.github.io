@@ -48,10 +48,10 @@
             <p>Kepada Yth.</p>
             <p>Bapak / Ibu / Saudara / i <br> di tempat</p>
                 <br>
-            <p id="nama-tamu" class="nama_tamu">Nama Tamu</p>
+            <p class="nama-tamu">Nama Tamu</p>
             <p>
             <a>
-                <button id="btnBuka" class="btn btn-light px-4 posisi-btn">
+                <button id="btnBuka" class="btn btn-light px-4 posisi-btn" onclick="bukaUndangan()">
                     <img src="assets/dec/paper.png" alt="paper" class="paper">
                         Buka Undangan
                 </button>
@@ -87,12 +87,11 @@
             <hr class="hr_custom">
             <div class="open_up text-center reveal">
                 <p>
-                        Dengan segala kerendahan hati,
-                        dan dengan ungkapan Syukur atas karunia Tuhan,<br> kami mengundang
-                        Bapak/Ibu/Saudara/i 
-                        <p id="nama-tamu" class="nama_tamu">Nama Tamu</p>
-                        untuk menghadiri acara Syukuran Pernikahan Putra-Putri kami
-                    </p>
+                    Dengan segala kerendahan hati,
+                    dan dengan ungkapan Syukur atas karunia Tuhan,<br> kami mengundang
+                    Bapak/Ibu/Saudara/i 
+                    untuk menghadiri acara Syukuran Pernikahan kami
+                </p>
             </div>
                 <br>
                     <div class="grid-test justify-content-center align-items-center text-center d-flex">
@@ -159,7 +158,7 @@
                                 <p class="pkl">Pukul : 16 . 00 WITA</p>
                                 <p>Rumah Bapak Simon Sanam <br> Belakang Pasar Kapan, Netpala</p>
                                 <P>Kec. Mollo Utara</P>
-                                <h2><a href="https://maps.app.goo.gl/t3HzVpp1UKVmQg5R9" class="btn" target="_blank" rel="noopener noreferrer">Lihat Lokasi</a></h2>
+                                <h2><a href="https://maps.app.goo.gl/zdP2JGmTarfRFe1o9" class="btn" target="_blank" rel="noopener noreferrer">Lihat Lokasi</a></h2>
                                 <hr class="hr_custom">
                             </div>
                         </div>
@@ -269,46 +268,47 @@
 
 <script>
     
+let namaTamuGlobal = "Tamu Undangan";
+
+function ambilNamaTamu() {
+    const params = new URLSearchParams(window.location.search);
+    let nama = params.get("to") || params.get("untuk") || params.get("kepada");
+
+    if (nama) {
+        try {
+            nama = decodeURIComponent(nama);
+        } catch (e) {}
+
+        nama = nama
+            .replace(/_/g, " ")
+            .replace(/\+/g, " ")
+            .replace(/[<>]/g, "")
+            .toLowerCase()
+            .replace(/\b\w/g, h => h.toUpperCase());
+
+        namaTamuGlobal = nama;
+    }
+}
+
+function isiSemuaNama() {
+    document.querySelectorAll(".nama-tamu").forEach(el => {
+        el.textContent = namaTamuGlobal;
+    });
+}
+
+// ⬅️ saat pertama load (cover)
 document.addEventListener("DOMContentLoaded", function () {
-
-    const target = document.getElementById("nama-tamu");
-
-    // ambil parameter URL
-    function getNamaTamu() {
-        const params = new URLSearchParams(window.location.search);
-
-        return params.get("untuk") || params.get("kepada") || params.get("to");
-    }
-
-    let namaTamu = getNamaTamu();
-
-    if (namaTamu) {
-
-        // ubah _ menjadi spasi
-        namaTamu = namaTamu.replace(/_/g, " ");
-
-        // decode jika ada %20 dll
-        namaTamu = decodeURIComponent(namaTamu);
-
-        // hapus karakter aneh (anti spam sederhana)
-        namaTamu = namaTamu.replace(/[<>]/g, "");
-
-        // kapital tiap kata
-        namaTamu = namaTamu.replace(/\b\w/g, function (huruf) {
-            return huruf.toUpperCase();
-        });
-
-        target.textContent = namaTamu;
-
-    } else {
-
-        target.textContent = "Nama Tamu";
-
-    }
-
+    ambilNamaTamu();
+    isiSemuaNama();
 });
 
+// ⬅️ saat tombol buka diklik (INI KUNCI NYA)
+function bukaUndangan() {
+    isiSemuaNama();
+}
+
 </script>
+
 
 
 
